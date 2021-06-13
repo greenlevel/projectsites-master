@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+
 use App\Repository\WebcategorieRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Entity(repositoryClass=WebcategorieRepository::class)
