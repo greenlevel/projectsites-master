@@ -47,9 +47,11 @@ class Weblink
 
 
     /**
-     * @ORM\Column(type="integer")
+     * @var integer
+     *
+     * @ORM\Column(name="position", type="integer", options={"default" : 0})
      */
-    private int $position = 0;
+    private $position;
 
 
 

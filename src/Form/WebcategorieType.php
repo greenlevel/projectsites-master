@@ -11,7 +11,7 @@
 
 namespace App\Form;
 
-use App\Entity\Weblink;
+use App\Entity\Webcategorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -28,7 +28,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
-class WeblinkType extends AbstractType
+class WebcategorieType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -46,11 +46,8 @@ class WeblinkType extends AbstractType
                 'attr' => ['autofocus' => true],
                 'label' => 'Name',
             ])
-            ->add('url', null, [
-                'attr' => ['autofocus' => true],
-                'label' => 'Url',
-            ])
-            ->add('position', IntegerType::class, [
+
+            ->add('cposition', IntegerType::class, [
                 'data' => '1',
                         'attr' => array('class' => 'testposition'),
         'label_attr' => array('class' => 'if-you-want-also-style-attr-label'),
@@ -64,7 +61,7 @@ class WeblinkType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Weblink::class,
+            'data_class' => Webcategorie::class,
             
         ]);
     }

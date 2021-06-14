@@ -9,10 +9,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
-
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 
+use App\Form\WebcategorieType;
 use App\Form\WeblinkType;
 
 class WebcategorieCrudController extends AbstractCrudController
@@ -39,17 +40,18 @@ class WebcategorieCrudController extends AbstractCrudController
         return [
             TextField::new('title', 'Category Title'),
             BooleanField::new('enabled', 'Front-End Enable'),
-            //ArrayField::new('visits','Wizyty')->onlyOnDetail(),
-             //AssociationField::new('weblinks')
-                   // ->setFormTypeOptions([
-                  //      'by_reference' => false,
-                 //   ])
-                //    ->autocomplete(),
+            IntegerField::new('cposition', 'Header Color')
+            ,
+
             ColorField::new('color', 'Header Color'),
 
             TextField::new('ftitle', 'Footer Title')->hideOnIndex(),
             TextField::new('furl', 'Footer Url')->hideOnIndex(),
-
+            CollectionField::new('weblinks')
+                        ->allowAdd()
+                        ->allowDelete()
+                        ->setEntryType(WeblinkType::class)
+                    ,
         
 
         ];
@@ -64,6 +66,20 @@ class WebcategorieCrudController extends AbstractCrudController
         return $webcategorie;
 
     }
+
+
+
+    public function configureAssets(Assets $assets): Assets
+    {
+        return $assets
+
+            ->addJsFile('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+            ->addJsFile('https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js')
+
+
+        ;
+    }
+
 
 
 

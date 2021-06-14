@@ -46,6 +46,14 @@
             {{ htmlContent|raw }}
         {% endfor %}
     {% endblock %}
+
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('appadmin') }}
+        {% endblock %}
+
+
+
 </head>
 
 {% block body %}
@@ -206,6 +214,13 @@
             {{ htmlContent|raw }}
         {% endfor %}
     {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('appadmin') }}
+        {% endblock %}
+
+
+    
     </body>
 {% endblock body %}
 </html>

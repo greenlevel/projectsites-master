@@ -60,9 +60,9 @@ class Webcategorie
     /**
      * @var integer
      *
-     * @ORM\Column(name="position", type="integer")
+     * @ORM\Column(name="cposition", type="integer", options={"default" : 0})
      */
-    private $position;
+    private $cposition;
 
 
     /**
@@ -200,19 +200,14 @@ class Webcategorie
 
 
 
-    /**
-     * @return int
-     */
-    public function getPosition(): ?int
+    public function getCposition(): ?int
     {
-        return $this->position;
+        return $this->cposition;
     }
-    /**
-     * @param int $position
-     */
-    public function setPosition(?int $position)
+
+    public function setCposition(int $cposition): void
     {
-        $this->position = $position;
+        $this->cposition = $cposition;
     }
 
 
