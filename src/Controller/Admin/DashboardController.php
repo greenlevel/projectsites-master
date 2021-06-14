@@ -38,14 +38,10 @@ class DashboardController extends AbstractDashboardController
     {
          return [
 
-         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home'),
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
-        // MenuItem::section('Blog'),
-        //MenuItem::subMenu('Blog', 'fa fa-article')->setSubItems([
-       // MenuItem::linkToCrud('Categories', 'fa fa-tags', Webcategorie::class),
-       // MenuItem::linkToCrud('Posts', 'fa fa-file-text', Webcategorie::class),
-       // MenuItem::linkToCrud('Comments', 'fa fa-comment', Webcategorie::class),
-        //]),
+            MenuItem::linktoDashboard('Dashboard', 'fa fa-home'),
+            
+            MenuItem::section('Links'),
+            MenuItem::linkToCrud('Links Categories', 'fa fa-tags', Webcategorie::class),
 
 
 
