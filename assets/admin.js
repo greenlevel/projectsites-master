@@ -8,5 +8,10 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/adminstyle.css';
 
+
+// start the Stimulus application
+import './bootstrap';
+
+
 // Creates links to the Symfony documentation
 import './js/adminstyle.js';

@@ -1,0 +1,72 @@
+{% extends '@!EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+    {% set has_page_title = block('page_title') is defined and block('page_title')|trim is not empty %}
+    {% set has_page_actions = block('page_actions') is defined and block('page_actions')|trim is not empty %}
+    {% set has_page_footer = block('page_footer') is defined and block('page_footer')|trim is not empty %}
+
+
+
+    <div class="content">
+        {% block content_header_wrapper %}
+            {% if has_page_title or has_page_actions %}
+                <section class="content-header">
+                    {% block content_header %}
+                        <div class="d-flex flex-row justify-content-between align-content-center w-100">
+                            <div class="content-header-title">
+                                {% if has_page_title %}
+                                    <h1 class="title">
+                                        {% block page_title %}   <h3>Dashboard</h3>{% endblock %}
+                                    </h1>
+                                {% endif %}
+                            </div>
+
+                            {% block page_actions_wrapper %}
+                                <div class="page-actions">{% block page_actions %}{% endblock %}</div>
+                            {% endblock %}
+                        </div>
+                    {% endblock content_header %}
+                </section>
+            {% endif %}
+        {% endblock content_header_wrapper %}
+
+        <section id="main" class="main-dashboard">
+            {% block main %}
+                <div class="content-panel">
+                    <div class="content-panel-body without-header {{ not has_page_footer ? 'without-footer' }}">
+                        {% block page_content %}
+
+                            <div class="col-3">
+                                <div class="card btn-primary">
+                                    <div class="card-body">
+                                        <h3 class="text-white d-inline">{{ countcat }}</h3>
+                                         <i class="fas fa-th-list float-right"></i>
+                                        <p>Number of categories</p>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        All Categroeis
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        {% endblock %}
+                    </div>
+
+                    {% if has_page_footer %}
+                        <section class="content-panel-footer without-padding">
+                            {{ block('page_footer') }}
+                        </section>
+                    {% endif %}
+                </div>
+            {% endblock %}            
+        </section>
+    </div>
+
+
+
+ 
+
+
+{% endblock %}

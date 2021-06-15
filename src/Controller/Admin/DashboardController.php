@@ -18,7 +18,17 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return parent::index();
+       // return parent::index();
+
+        $items = $this->em->getRepository(Sitesettings::class)
+            ->findAll();
+        $countcat=count($items);
+
+
+        // you can also render some template to display a proper Dashboard
+        // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
+        return $this->render('bundles/EasyAdminBundle/extend/homelayout.html.twig', ['countcat' => $countcat]);
+
     }
 
 
@@ -33,7 +43,7 @@ class DashboardController extends AbstractDashboardController
     public function setting()
     {
         $setting = $this->em->getRepository(Sitesettings::class)
-            ->findAll()[1];
+            ->find(1);
 
         return $setting;
     }
@@ -46,24 +56,19 @@ class DashboardController extends AbstractDashboardController
     {
 
 
-//$setting = $this->em->getRepository(Sitesettings::class)
-           // ->find('2');
+        $setting = $this->em->getRepository(Sitesettings::class)
+           ->find('2');
 
-            //$logo = $setting->title;
+            $logo = $setting->getTitle();
 
         return Dashboard::new()
-
-
-
 
             // the name visible to end users
             ->setTitle('ACME Corp.')
             // you can include HTML contents too (e.g. to link to an image)
-            ->setTitle('$logo <span class="text-small">Corp.</span>')
+            ->setTitle($logo)
 
-      
             ->renderSidebarMinimized(false)
-
           ;
 
     }
