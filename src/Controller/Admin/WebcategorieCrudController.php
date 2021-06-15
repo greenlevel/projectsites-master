@@ -11,6 +11,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
+
+
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 
 use App\Form\WebcategorieType;
