@@ -44,7 +44,7 @@ class WebcategorieCrudController extends AbstractCrudController
         return [
             TextField::new('title', 'Category Title'),
             BooleanField::new('enabled', 'Front-End Enable'),
-            IntegerField::new('cposition', 'Header Color')
+            IntegerField::new('cposition', 'position')
             ,
 
             ColorField::new('color', 'Header Color'),
