@@ -40,7 +40,13 @@ public function configureActions(Actions $actions): Actions
             return $action;
         });
 
-        return $actions;
+        return $actions
+
+
+           // ->remove(Crud::PAGE_INDEX, Action::DELETE)
+            ;
+
+
 }
 
 
