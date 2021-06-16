@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\User;
 use App\Entity\Webcategorie;
 use App\Entity\Sitesettings;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,7 +26,7 @@ class DashboardController extends AbstractDashboardController
        // return parent::index();
 
         $items = $this->em->getRepository(Sitesettings::class)
-            ->findAll();
+        ->findAll();
         $countcat=count($items);
 
 
@@ -47,7 +48,7 @@ class DashboardController extends AbstractDashboardController
     public function setting()
     {
         $setting = $this->em->getRepository(Sitesettings::class)
-            ->find(1);
+        ->find(1);
 
         return $setting;
     }
@@ -61,46 +62,61 @@ class DashboardController extends AbstractDashboardController
 
 
         $setting = $this->em->getRepository(Sitesettings::class)
-           ->find('2');
+        ->find('2');
 
-            $logo = $setting->getTitle();
+        $logo = $setting->getTitle();
 
         return Dashboard::new()
 
             // the name visible to end users
-            ->setTitle('ACME Corp.')
+        ->setTitle('ACME Corp.')
             // you can include HTML contents too (e.g. to link to an image)
-            ->setTitle($logo)
+        ->setTitle($logo)
 
 
             // set this option if you prefer the page content to span the entire
             // browser width, instead of the default design which sets a max width
-            ->renderContentMaximized()
+        ->renderContentMaximized()
 
 
 
-            ->renderSidebarMinimized(false)
-          ;
+        ->renderSidebarMinimized(false)
+        ;
 
     }
 
     public function configureMenuItems(): iterable
     {
-         return [
+       return [
 
-            MenuItem::linktoDashboard('Dashboard', 'fa fa-home'),
-            
-            MenuItem::section('Links', 'fa fa-list'),
-            MenuItem::linkToCrud('All Site Categories', 'fa fa-circle', Webcategorie::class),
-            MenuItem::linkToCrud('Add Category', 'fa fa-circle', Webcategorie::class)
-            ->setAction('new'),
+        MenuItem::linktoDashboard('Dashboard', 'fa fa-home'),
 
-            MenuItem::section('Settings', 'fa fa-cogs'),
-            MenuItem::linkToCrud('Site Settings', 'fa fa-circle', Sitesettings::class)
-            ->setAction('edit')
-            ->setEntityId(2),
+        MenuItem::section('Links', 'fa fa-list'),
+        MenuItem::linkToCrud('All Site Categories', 'fa fa-circle', Webcategorie::class),
+        MenuItem::linkToCrud('Add Category', 'fa fa-circle', Webcategorie::class)
+        ->setAction('new'),
 
-                ];
+        MenuItem::section('Settings', 'fa fa-cogs'),
+        MenuItem::linkToCrud('Site Settings', 'fa fa-circle', Sitesettings::class)
+        ->setAction('edit')
+        ->setEntityId(2),
 
-    }
+
+        MenuItem::section('Users', 'fa fa-user-friends'),
+        MenuItem::linkToCrud('All Users', 'fa fa-circle', User::class),
+        MenuItem::linkToCrud('Add User', 'fa fa-circle', User::class)
+        ->setAction('new'),
+
+
+    ];
+
+
+
+
+
+
+
+
+
+}
 }

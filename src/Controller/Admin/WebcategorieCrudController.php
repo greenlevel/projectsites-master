@@ -97,6 +97,7 @@ class WebcategorieCrudController extends AbstractCrudController
             })
 
             ->remove(Crud::PAGE_EDIT, Action::SAVE_AND_RETURN)
+            ->add(Crud::PAGE_EDIT, Action::DELETE)
 
         ;
     }
