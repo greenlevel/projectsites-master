@@ -14,6 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\BatchActionDto;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 
@@ -90,17 +91,44 @@ class WebcategorieCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions
     {
+
+
+
+        $export = Action::new('export', 'tet')
+            ->setIcon('fa fa-download')
+            ->linkToCrudAction('approveUsers')
+            ->setCssClass('btn')
+            ->createAsGlobalAction()
+            ;
+
+
         return $actions
 
             ->update(Crud::PAGE_EDIT, Action::SAVE_AND_CONTINUE, function (Action $action) {
                 return $action->setIcon(FALSE)->setLabel('Save Changes');
             })
 
+        ->add(Crud::PAGE_INDEX,  $export)
             ->remove(Crud::PAGE_EDIT, Action::SAVE_AND_RETURN)
             ->add(Crud::PAGE_EDIT, Action::DELETE)
 
         ;
     }
+
+
+    public function approveUsers(BatchActionDto $batchActionDto)
+    {
+        $entityManager = $this->getDoctrine()->getManagerForClass($batchActionDto->getEntityFqcn());
+        foreach ($batchActionDto->getEntityIds() as $id) {
+            $user = $entityManager->find($id);
+            $user->approve();
+        }
+
+        $entityManager->flush();
+
+        return $this->redirect($batchActionDto->getReferrerUrl());
+    }
+
 
 
 
