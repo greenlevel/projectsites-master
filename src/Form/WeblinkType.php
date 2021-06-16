@@ -43,15 +43,17 @@ class WeblinkType extends AbstractType
 
         $builder
             ->add('title', null, [
-                'attr' => ['autofocus' => true],
-                'label' => 'Name',
+                'attr' => ['autofocus' => true, 'placeholder' => 'title',],
+                'label' => false,
+
             ])
             ->add('url', null, [
-                'attr' => ['autofocus' => true],
-                'label' => 'Url',
+                'attr' => ['autofocus' => true, 'placeholder' => 'url',],
+                 'label' => false,
             ])
             ->add('position', IntegerType::class, [
                 'data' => '1',
+                 'label' => false,
                         'attr' => array('class' => 'testposition'),
         'label_attr' => array('class' => 'if-you-want-also-style-attr-label'),
 

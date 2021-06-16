@@ -11,7 +11,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
-
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 
@@ -53,6 +55,7 @@ class WebcategorieCrudController extends AbstractCrudController
                         ->allowAdd()
                         ->allowDelete()
                         ->setEntryType(WeblinkType::class)
+                            ->addCssClass('field-collection-links')
                     ,
         
 
@@ -83,6 +86,20 @@ class WebcategorieCrudController extends AbstractCrudController
     }
 
 
+
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+
+            ->update(Crud::PAGE_EDIT, Action::SAVE_AND_CONTINUE, function (Action $action) {
+                return $action->setIcon(FALSE)->setLabel('Save Changes');
+            })
+
+            ->remove(Crud::PAGE_EDIT, Action::SAVE_AND_RETURN)
+
+        ;
+    }
 
 
 

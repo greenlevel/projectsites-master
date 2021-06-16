@@ -72,6 +72,13 @@ class DashboardController extends AbstractDashboardController
             // you can include HTML contents too (e.g. to link to an image)
             ->setTitle($logo)
 
+
+            // set this option if you prefer the page content to span the entire
+            // browser width, instead of the default design which sets a max width
+            ->renderContentMaximized()
+
+
+
             ->renderSidebarMinimized(false)
           ;
 

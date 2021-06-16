@@ -162,8 +162,8 @@
                                 {% set has_help_message = (ea.crud.helpMessage ?? '') is not empty %}
                                 <section class="content-header">
                                     {% block content_header %}
-                                        <div class="d-flex flex-row justify-content-between align-content-center w-100">
-                                            <div class="content-header-title">
+                                        <div class="d-block d-sm-flex flex-row justify-content-between align-content-center w-100">
+                                            <div class="content-header-title d-block">
                                                 <h1 class="title">
                                                     {% block content_title %}{% endblock %}
 
@@ -178,7 +178,7 @@
                                             </div>
 
                                             {% block page_actions_wrapper %}
-                                                <div class="page-actions">{% block page_actions %}{% endblock %}</div>
+                                                <div class="page-actions  py-2 p-sm-1">{% block page_actions %}{% endblock %}</div>
                                             {% endblock %}
                                         </div>
                                     {% endblock content_header %}

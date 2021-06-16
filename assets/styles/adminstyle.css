@@ -1,21 +1,132 @@
+
+:root {
+  --main-bg-color: #596971;
+  --main-bg-colordarker: #343b3f;
+  --content-bg-color: #f8fafc;
+}
+
+
+.btn-secondary, .btn-secondary.disabled, .btn-secondary[disabled] {
+    background-color: #3f51b5;
+    color: #ffffff;
+}
+
+
 .form-group .form-control-label {
-	
-font-weight:600
+
+    font-weight:600
 
 }
 
-.main-sidebar .menu i.fa-circle {
+.field-collection-links .form-group {
 
-font-size: 6px !important;
+    position: relative;
 
 }
 
 
-.main-dashboard i {
+.field-collection-delete-button {
 
+    position: absolute;
+    right: 0;
+    top: 0;
+
+}
+
+
+body {
+
+    background-color: var(--main-bg-color);
+}
+
+
+
+div.wrapper {
+
+    width: 100%;
+    margin: 0;
+}
+
+header.main-header {
+
+    background: var(--main-bg-colordarker);
+    padding: 20px 20px;
+}
+
+
+header.main-header #header-logo a {
+
+    color: white;
+}
+
+
+aside.main-sidebar {
+    background: var(--main-bg-color);
+    padding: 15px 0px 0px 15px;
+}
+
+
+aside.main-sidebar #main-menu   .menu a {
+ color: #d4d9e1;
+
+}
+
+
+aside.main-sidebar .menu i.fa-circle {
+
+    font-size: 6px !important;
+
+}
+
+
+aside.main-dashboard i {
 
     font-size: 30px;
     opacity: 0.7;
     color: #222b58e6;
+}
 
+
+#main-menu .menu .menu-item.active:not(.expanded) .menu-icon, #main-menu .menu .menu-item.active:not(.expanded) a {
+    color: #ffffff;
+}
+
+
+div.content-wrapper {
+
+    background: #ffffff;
+    margin-top: -20px;
+    min-height: 900px;
+    grid-template-columns: 0px auto 0px;
+}
+
+
+div.content-wrapper .content-header {
+
+    padding: 10px 10px;
+
+}
+
+
+div.content-wrapper .content-header:after {
+    left: unset;
+    right: 0px;
+}
+
+
+div.content-wrapper  .content-header:after, .content-header:before {
+
+    left: 0;
+
+}
+
+
+div.content-wrapper .content-header .page-actions {
+    justify-content: flex-end;
+
+}
+
+#navigation-toggler {
+
+    color: #ffffff;
 }
