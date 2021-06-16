@@ -10,7 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Webcategorie;
 use App\Entity\Sitesettings;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+ * @IsGranted("ROLE_ADMIN")
+ */
 class DashboardController extends AbstractDashboardController
 {
     /**
