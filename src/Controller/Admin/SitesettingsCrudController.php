@@ -6,6 +6,7 @@ use App\Entity\Sitesettings;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -36,6 +37,7 @@ class SitesettingsCrudController extends AbstractCrudController
         TextField::new('title'),
         TextField::new('subtitle'),
         TextEditorField::new('footertitle'),
+        TextareaField::new('analytics'),
         ImageField::new('logo')
                     ->setBasePath('uploads')
                     ->setUploadDir('public/uploads')

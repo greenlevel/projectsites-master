@@ -34,10 +34,20 @@ class Sitesettings
      */
     private $subtitle;
 
+
+
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $footertitle;
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $analytics;
+
 
     public function getId(): ?int
     {
@@ -113,4 +123,19 @@ class Sitesettings
 
         return $this;
     }
+
+    public function getAnalytics(): ?string
+    {
+        return $this->analytics;
+    }
+
+    public function setAnalytics(?string $analytics): self
+    {
+        $this->analytics = $analytics;
+
+        return $this;
+    }
+
+
+
 }
