@@ -43,9 +43,13 @@ class WebcategorieCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+
+            IntegerField::new('id', 'id')
+            ,         
             TextField::new('title', 'Category Title'),
             BooleanField::new('enabled', 'Front-End Enable'),
             IntegerField::new('cposition', 'position')
+                                        ->addCssClass('list-p-order')
             ,
 
             ColorField::new('color', 'Header Color'),

@@ -78,7 +78,7 @@ function init3() {
         //var listElements = $("tr");
          //iterate through all the list items
 
-  var itemOrder = $('tbody').sortable("toArray");
+  var itemOrder = $('tbody tr');
 
    for (var i = 0; i < itemOrder.length; i++) {
              //change the value of the sortorder input element
@@ -90,7 +90,8 @@ function init3() {
                         value: i+1,
                       });
 
-            $(itemOrder[i]).children('.field-integer').html(divv);
+
+            $(itemOrder[i]).children('.list-p-order').html(divv);
         }  
 
 
